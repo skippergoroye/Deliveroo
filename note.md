@@ -49,6 +49,8 @@ NativeWind uses [Tailwind CSS](https://tailwindcss.com/docs/installation) Babel 
 
 
 
+
+
 # Expo
 
 1. Create the project
@@ -78,9 +80,7 @@ Run `<npx tailwindcss init>` to create a `<tailwind.config.js>` file
 Add the paths to all of your component files in your tailwind.config.js file. Remember to replace <custom directory> with the actual name of your directory e.g. screens.
 
 
-
 ### tailwind.config.js
-
 module.exports = {
 - content: [],
 + content: ["./App.{js,jsx,ts,tsx}", "./<custom directory> src/**/*.{js,jsx,ts,tsx}"],
@@ -128,6 +128,9 @@ export default function App() {
     </View>
   );
 }
+
+
+
 
 
 
@@ -251,6 +254,81 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+2. Supporting safe areas
+
+
+import { StatusBar } from 'expo-status-bar';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './src/components/HomeScreen';
+
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+
+
+
+## Updating options with setOptions
+
+import { View, Text } from 'react-native'
+import React, { useLayoutEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
+
+export default function HomeScreen() {
+  const navigation = useNavigation()
+
+  useLayoutEffect(() => (
+    navigation.setOptions({
+      headerShown: false
+    })
+  ), [])
+  return (
+    <SafeAreaView>
+      <Text className="bg-green-500">HomeScreen</Text>
+    </SafeAreaView>
+  )
+}
+
+
+
+
+
+
+4. SafeAreaView
+
+The purpose of SafeAreaView is to render content within the safe area boundaries of a device.
+
+
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+
+
+
+<SafeAreaView>
+  <Text className="bg-green-500">HomeScreen</Text>
+</SafeAreaView>
 
 
 
