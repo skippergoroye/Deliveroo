@@ -344,6 +344,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
+
+
+
+
 5. Images
 
 <Image source={require('./img/check.png')} />
@@ -360,41 +364,45 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
+
+
+
+
+
+
+
 6. Add ICONS to React Native Project
 
-Use the react native hero icon to add icons to your project
+To add icons in a react native project we use `<@expo/vector-icons>` react-native-vector-icons and uses a similar API. It includes popular icon sets that you can browse at `<icons.expo.fyi>`.
 
 
-
-## HeroICons
-https://heroicons.com/
-
+# Installation
+npx expo install @expo/vector-icons
 
 
-## Installation
-npm i react-native-heroicons
+# Usage 
+import * as React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Entypo, FontAwesome5 } from '@expo/vector-icons'; 
 
 
-## Usage
-
-import React from "react";
-import { View } from "react-native";
-import { SparklesIcon } from "react-native-heroicons/solid";
-import { SparklesIcon as SparklesIconOutline } from "react-native-heroicons/outline";
-// Old solid style from heroicons v1
-import { SparklesIcon as SparklesIconMini } from "react-native-heroicons/mini";
-
-const App = () => {
+export default function App() {
   return (
-    <View>
-      <SparklesIcon />
-      <SparklesIconOutline />
-      <SparklesIconMini />
+    <View style={styles.container}>
+      <Entypo name="chevron-down" size={24} color="black" />
+      <FontAwesome5 name="facebook-f" size={24} color="black" />
+      <FontAwesome.Button name="facebook" backgroundColor="#3b5998" onPress={loginWithFacebook}>
+        Login with Facebook
+      </FontAwesome.Button>
     </View>
   );
-};
+}
 
-export default App;
+const styles = StyleSheet.create({ ... }); 
+
+
+
+
 
 
 
