@@ -315,6 +315,8 @@ export default function HomeScreen() {
 
 
 
+
+
 4. SafeAreaView
 
 The purpose of SafeAreaView is to render content within the safe area boundaries of a device.
@@ -324,11 +326,20 @@ The purpose of SafeAreaView is to render content within the safe area boundaries
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-
-
 <SafeAreaView>
   <Text className="bg-green-500">HomeScreen</Text>
 </SafeAreaView>
+
+
+
+5. Images
+
+<Image source={require('./img/check.png')} />
+
+<Image
+  source={{uri: 'asset:/app_icon.png'}}
+  style={{width: 40, height: 40}}
+/>
 
 
 
