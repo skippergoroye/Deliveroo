@@ -263,7 +263,12 @@ export default App;
 
 
 
-2. Supporting safe areas
+
+
+
+
+
+## Supporting safe areas
 
 
 import { StatusBar } from 'expo-status-bar';
@@ -317,6 +322,8 @@ export default function HomeScreen() {
 
 
 
+
+
 4. SafeAreaView
 
 The purpose of SafeAreaView is to render content within the safe area boundaries of a device.
@@ -332,6 +339,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
+
+
+
+
+
 5. Images
 
 <Image source={require('./img/check.png')} />
@@ -340,6 +352,52 @@ import { SafeAreaView } from 'react-native-safe-area-context';
   source={{uri: 'asset:/app_icon.png'}}
   style={{width: 40, height: 40}}
 />
+
+
+
+
+
+
+
+
+6. Add ICONS to React Native Project
+
+Use the react native hero icon to add icons to your project
+
+
+
+## HeroICons
+https://heroicons.com/
+
+
+
+## Installation
+npm i react-native-heroicons
+
+
+## Usage
+
+import React from "react";
+import { View } from "react-native";
+import { SparklesIcon } from "react-native-heroicons/solid";
+import { SparklesIcon as SparklesIconOutline } from "react-native-heroicons/outline";
+// Old solid style from heroicons v1
+import { SparklesIcon as SparklesIconMini } from "react-native-heroicons/mini";
+
+const App = () => {
+  return (
+    <View>
+      <SparklesIcon />
+      <SparklesIconOutline />
+      <SparklesIconMini />
+    </View>
+  );
+};
+
+export default App;
+
+
+
 
 
 
