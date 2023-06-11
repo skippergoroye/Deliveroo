@@ -406,6 +406,59 @@ const styles = StyleSheet.create({ ... });
 
 
 
+7. Handling Text Input
+
+`<TextInput>`is a [Core Component](https://reactnative.dev/docs/next/textinput)   that allows the user to enter text. It has an onChangeText prop that takes a function to be called every time the text changed, and an onSubmitEditing prop that takes a function to be called when the text is submitted.
+
+
+import React, {useState} from 'react';
+import {Text, TextInput, View} from 'react-native';
+
+const PizzaTranslator = () => {
+  const [text, setText] = useState('');
+
+
+  return (
+    <View style={{padding: 10}}>
+      <TextInput
+        style={{height: 40}}
+        placeholder="Type here to translate!"
+        onChangeText={newText => setText(newText)}
+        value={text}
+        value={number}
+        keyboardType="numeric"
+        keyboardType="default"
+      />
+    </View>
+  );
+};
+
+export default PizzaTranslator;
+
+
+
+
+
+
+
+
+8. ScrollView
+
+ScrollView is a core component in React Native that provides a scrollable view for rendering a list of items or content that exceeds the available screen space. It allows users to scroll vertically or horizontally to view the content that extends beyond the visible area.
+
+
+
+`<ScrollView>` vs `<FlatList>` - which one to use?
+
+ScrollView renders all its react child components at once, but this has a performance downside.
+
+Imagine you have a very long list of items you want to display, maybe several screens worth of content. Creating JS components and native views for everything all at once, much of which may not even be shown, will contribute to slow rendering and increased memory usage.
+
+This is where FlatList comes into play. `<FlatList>` renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
+
+`<FlatList>` is also handy if you want to render separators between your items, multiple columns, infinite scroll loading, or any number of other features it supports out of the box.
+
+
 
 
 
