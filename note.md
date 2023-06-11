@@ -460,6 +460,25 @@ This is where FlatList comes into play. `<FlatList>` renders items lazily, when 
 
 
 
+# contentContainerStyle
+These styles will be applied to the scroll view content container which wraps all of the child views. it is used in styling a scroolview 
+
+Example:
+<ScrollView className="bg-gray-200" contentContainerStyle={{
+   paddingBottom: 100
+}}>
+
+
+
+
+# horizontal
+When true, the scroll view's children are arranged horizontally in a row instead of vertically in a column.
+
+# showsHorizontalScrollIndicator
+When true, shows a horizontal scroll indicator.
+
+
+
 
 
 

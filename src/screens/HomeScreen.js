@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import Categories from "../components/Categories";
+import FeaturedRow from "../components/FeaturedRow";
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -51,14 +52,35 @@ function HomeScreen() {
       </View>
 
       {/* Body */}
-      <ScrollView className="bg-gray-200" contentContainerStyle={{
+      <ScrollView className="bg-gray-100" contentContainerStyle={{
         paddingBottom: 100
       }}>
         {/* categoroy */}
-
         <Categories />
 
         {/* featured row  */}
+        <FeaturedRow 
+          id="123"
+          title="Featured"
+          description="Paid Placement for our partners"
+        />
+
+
+         {/* Tasty Discount  */}
+        <FeaturedRow 
+          id="1234"
+          title="Tasty Discount"
+          description="Everyone's been enjoying these juicy discounts"
+        />
+
+
+       {/* offer near you  */}
+       <FeaturedRow 
+          id="1235"
+          title="Offer near you!"
+          description="Why not support your local resturant tonight"
+        />
+        
       </ScrollView>
     </SafeAreaView>
   );
