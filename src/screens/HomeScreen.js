@@ -5,8 +5,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Entypo, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
-// import { client } from "../../sanity";
-import { getFeaturedResturants } from "../../api";
+import { client } from "../../sanity";
+
 
 
 
@@ -25,32 +25,24 @@ function HomeScreen() {
   );
 
 
-  // useEffect(()=>{
-  //   client.fetch(`
-  //   *[_type == 'featured'] {
-  //     ...,
-  //     resturants[]->{
-  //     ...,
-  //     type->{
-  //         name
-  //     },
-  //     dishes[]->
-  //     }
-  //   }`).then(data => {
-  //     setFeaturedCategories(data)
-  //   })
-  // },[])
-
-
   useEffect(()=>{
-    getFeaturedResturants()
-    .then((data) =>{
-        setFeaturedCategories(data);
-    }).catch(e => {
-      console.error(e)
-      return e;
+    client.fetch(`
+    *[_type == 'featured'] {
+      ...,
+      resturants[]->{
+      ...,
+      type->{
+          name
+      },
+      dishes[]->
+      }
+    }`).then(data => {
+      setFeaturedCategories(data)
     })
   },[])
+
+
+  
 
 
 
