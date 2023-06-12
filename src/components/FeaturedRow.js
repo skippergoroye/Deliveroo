@@ -20,7 +20,8 @@ export default function FeaturedRow({ id, title, description }) {
             paddingHorizontal: 15
         }}
         horizontal 
-        showsHorizontalScrollIndicator={false}>
+        showsHorizontalScrollIndicator={false}
+        className="pt-4">
          
         {/* ResturantCard  */}
         <ResturantCard 

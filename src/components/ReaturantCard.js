@@ -39,8 +39,6 @@ export default function ReaturantCard({
                 <Text className="text-xs text-gray-500">Nearby .{address} </Text>
             </View>
         </View>
-
-        
     </TouchableOpacity>
   )
 }

@@ -406,6 +406,9 @@ const styles = StyleSheet.create({ ... });
 
 
 
+
+
+
 7. Handling Text Input
 
 `<TextInput>`is a [Core Component](https://reactnative.dev/docs/next/textinput)   that allows the user to enter text. It has an onChangeText prop that takes a function to be called every time the text changed, and an onSubmitEditing prop that takes a function to be called when the text is submitted.
@@ -442,8 +445,14 @@ export default PizzaTranslator;
 
 
 
-8. ScrollView
 
+
+
+
+
+
+
+8. ScrollView
 ScrollView is a core component in React Native that provides a scrollable view for rendering a list of items or content that exceeds the available screen space. It allows users to scroll vertically or horizontally to view the content that extends beyond the visible area.
 
 
@@ -466,6 +475,8 @@ These styles will be applied to the scroll view content container which wraps al
 Example:
 <ScrollView className="bg-gray-200" contentContainerStyle={{
    paddingBottom: 100
+   paddingHorizontal: 15
+   paddingTop: 10
 }}>
 
 
@@ -476,6 +487,47 @@ When true, the scroll view's children are arranged horizontally in a row instead
 
 # showsHorizontalScrollIndicator
 When true, shows a horizontal scroll indicator.
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. Sanity
+Sanity is a platform for creating and working with structured content. Your content is stored in the cloud and can be distributed anywhere, for example on a website or in an app.
+
+
+
+# Create a Sanity project using  [ClI](https://www.sanity.io/docs/getting-started-with-sanity-cli)
+npm install -g @sanity/cli
+sanity init
+- Blog schema
+
+
+
+# Create a Sanity project 
+npm create sanity@latest -- --create-project "Project Name(Sanity)" --dataset production
+cd sanity
+npm run start
+http://localhost:3333/desk
+
+
+
+
+# Add following dependency to the client
+npm install @sanity/client
+npm install @sanity/image-url
+
+
+# Create a sanity.js file 
+
 
 
 
