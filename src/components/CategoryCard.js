@@ -1,12 +1,13 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
-export default function CategoryCard({ imgurl, title }) {
+
+export default function CategoryCard({ imgUrl, title }) {
   return (
     <View className="relative mr-1">
       <Image 
         source={{
-          uri: imgurl,
+          uri: imgUrl,
         }}
         className="h-20 w-20 rounded"
       />

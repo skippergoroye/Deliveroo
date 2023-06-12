@@ -8,9 +8,6 @@ import FeaturedRow from "../components/FeaturedRow";
 import { client } from "../../sanity";
 
 
-
-
-
 function HomeScreen() {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([])
@@ -32,7 +29,7 @@ function HomeScreen() {
       resturants[]->{
       ...,
       type->{
-          name
+         name
       },
       dishes[]->
       }
@@ -40,10 +37,6 @@ function HomeScreen() {
       setFeaturedCategories(data)
     })
   },[])
-
-
-  
-
 
 
   // console.log(featuredCategories)
@@ -89,21 +82,21 @@ function HomeScreen() {
         {/* categoroy */}
         <Categories />
 
+
+
         {/* featured row  */}
         {featuredCategories?.map(category=>{
-                return (
-                      <FeaturedRow 
-                          key={category._id}
-                          id={category._id}
-                          title={category.name}
-                          resturants={category?.resturants}
-                          description={category.description}
-                          featuredCategory={category._type}
-                      />
-                )
+          return (
+            <FeaturedRow 
+              key={category._id}
+              id={category._id}
+              title={category.name}
+              resturants={category?.resturants}
+              description={category.short_description}
+              featuredCategory={category._type}
+            />
+          )
           })}
-        
-        
       </ScrollView>
     </SafeAreaView>
   );

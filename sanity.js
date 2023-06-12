@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url'
 
 
 export const client = createClient({
-    projectId: 'npcegap4',
+    projectId: 'qwoxusny',
     dataset: 'production',
     useCdn: true,
     apiVersion: '2021-10-21',
@@ -11,10 +11,12 @@ export const client = createClient({
 
 
 const builder = imageUrlBuilder(client)
-export const urlfor = (source) => builder.image(source)
+export const urlFor = (source) => builder.image(source)
 
-
+// sony 
 // qwoxusny
 
+
+// npcegap4 
 
 

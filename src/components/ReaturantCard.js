@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { FontAwesome, EvilIcons } from '@expo/vector-icons'; 
-
+import { urlFor } from '../../sanity';
 
 
 export default function ReaturantCard({
     id,
-    imgurl,
+    imgUrl,
     title,
     rating,
     genre,
@@ -20,7 +20,7 @@ export default function ReaturantCard({
     <TouchableOpacity className="bg-white mr-3 shadow">
         <Image 
          source={{
-            uri: imgurl
+            uri: urlFor(imgUrl).url()
          }}
          className="h-36 w-64 rounded-sm"
         />

@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'; 
 import ResturantCard from '../components/ReaturantCard'
+import { client } from '../../sanity';
 
 
 
 export default function FeaturedRow({ id, title, description }) {
+  const [restaurants, setRetaurants] = useState([])
+
+  useEffect(() => {
+    client.fetch(`
+    *[_type == "featured" && _id ==$id]{
+      ...,
+        restaurants[]->{
+          ...,
+           dishes[]->,
+            type->{
+              name
+            }
+          },
+        }[0]
+      `,{id}). then((data) => {
+          setRetaurants(data?.restaurants);
+      })
+  },[id])
+
+
+  // console.log(restaurants)
+
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -24,19 +47,24 @@ export default function FeaturedRow({ id, title, description }) {
         className="pt-4">
          
         {/* ResturantCard  */}
-        <ResturantCard 
-          id={123}
-          imgurl="https://links.papareact.com/gn7"
-          title="Yo! Sushi"
-          rating={4.5}
-          genre="Japanese"
-          address="123 Main St"
-          short_description=" This is a test description"
-          dishes={[]}
-          long={20}
-          lat={0}
-        />
 
+        {restaurants?.map((restaurant) => (
+          <ResturantCard 
+            key={restaurant._id}
+            id={restaurant._id}
+            imgUrl={restaurant.image}
+            address={restaurant.address}
+            title={restaurant.name}
+            dishes={restaurant.dishes}
+            rating={restaurant.rating}
+            short_description={restaurant.short_description}
+            genre={restaurant.type?.name}
+            long={restaurant.long}
+            lat={restaurant.lat}
+          />
+        ))}
+
+      {/*         
         <ResturantCard 
           id={123}
           imgurl="https://links.papareact.com/gn7"
@@ -77,9 +105,6 @@ export default function FeaturedRow({ id, title, description }) {
           lat={0}
         /> 
 
-
-
-
         <ResturantCard 
           id={123}
           imgurl="https://links.papareact.com/gn7"
@@ -91,9 +116,8 @@ export default function FeaturedRow({ id, title, description }) {
           dishes={[]}
           long={20}
           lat={0}
-        /> 
+        /> */}
       </ScrollView>
-
     </View> 
   )
 }
