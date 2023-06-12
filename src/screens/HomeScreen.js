@@ -1,13 +1,20 @@
 import { View, Text, Image, TextInput, ScrollView } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
+// import { client } from "../../sanity";
+import { getFeaturedResturants } from "../../api";
+
+
+
 
 function HomeScreen() {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState([])
+
 
   useLayoutEffect(
     () =>
@@ -16,6 +23,38 @@ function HomeScreen() {
       }),
     []
   );
+
+
+  // useEffect(()=>{
+  //   client.fetch(`
+  //   *[_type == 'featured'] {
+  //     ...,
+  //     resturants[]->{
+  //     ...,
+  //     type->{
+  //         name
+  //     },
+  //     dishes[]->
+  //     }
+  //   }`).then(data => {
+  //     setFeaturedCategories(data)
+  //   })
+  // },[])
+
+
+  useEffect(()=>{
+    getFeaturedResturants()
+    .then((data) =>{
+        setFeaturedCategories(data);
+    }).catch(e => {
+      console.error(e)
+      return e;
+    })
+  },[])
+
+
+
+  // console.log(featuredCategories)
 
   return (
     <SafeAreaView className="bg-white pt-5">
@@ -59,27 +98,19 @@ function HomeScreen() {
         <Categories />
 
         {/* featured row  */}
-        <FeaturedRow 
-          id="123"
-          title="Featured"
-          description="Paid Placement for our partners"
-        />
-
-
-         {/* Tasty Discount  */}
-        <FeaturedRow 
-          id="1234"
-          title="Tasty Discount"
-          description="Everyone's been enjoying these juicy discounts"
-        />
-
-
-       {/* offer near you  */}
-       <FeaturedRow 
-          id="1235"
-          title="Offer near you!"
-          description="Why not support your local resturant tonight"
-        />
+        {featuredCategories?.map(category=>{
+                return (
+                      <FeaturedRow 
+                          key={category._id}
+                          id={category._id}
+                          title={category.name}
+                          resturants={category?.resturants}
+                          description={category.description}
+                          featuredCategory={category._type}
+                      />
+                )
+          })}
+        
         
       </ScrollView>
     </SafeAreaView>

@@ -500,12 +500,14 @@ When true, shows a horizontal scroll indicator.
 
 
 
-9. Sanity
+
+
+9. Sanity.io
 Sanity is a platform for creating and working with structured content. Your content is stored in the cloud and can be distributed anywhere, for example on a website or in an app.
 
 
 
-# Create a Sanity project using  [ClI](https://www.sanity.io/docs/getting-started-with-sanity-cli)
+# Create a Sanity project for backend using  [ClI](https://www.sanity.io/docs/getting-started-with-sanity-cli)
 npm install -g @sanity/cli
 sanity init
 - Blog schema
@@ -521,13 +523,79 @@ http://localhost:3333/desk
 
 
 
+
+
+
 # Add following dependency to the client
 npm install @sanity/client
 npm install @sanity/image-url
 
+Then create a sanity.js file 
 
-# Create a sanity.js file 
 
+
+
+
+1. @sanity/client
+- Install the client with a package manager:
+npm install @sanity/client
+
+
+- Import and create a new client instance, and use its methods to interact with your project's Content Lake. Below are some simple examples in plain JavaScript. Read further for more comprehensive documentation.
+
+// sanity.js
+import {createClient} from '@sanity/client'
+
+
+export const client = createClient({
+  projectId: 'your-project-id',
+  dataset: 'your-dataset-name',
+  useCdn: true, // set to `false` to bypass the edge cache
+  apiVersion: '2023-05-03', // use current date (YYYY-MM-DD) to target the latest API version
+})
+
+
+
+
+2. @sanity/image-url
+Quickly generate image urls from Sanity image records.
+This helper will by default respect any crops/hotspots specified in the Sanity content provided to it. 
+
+
+
+# Getting started
+npm install @sanity/image-url
+
+
+
+
+# usage 
+The most common way to use this library in your project is to configure it by passing it your configured [@sanity/image-url](https://www.sanity.io/docs/image-url). That way it will automatically be preconfigured to your current project and dataset:
+
+
+
+import {createClient} from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
+
+const builder = imageUrlBuilder(myConfiguredSanityClient)
+
+ES5
+function urlFor(source) {
+  return builder.image(source)
+}
+
+ES6
+
+export const urlFor = (source) => builder.image(source)
+
+
+
+# Add to CORS ORIGIN FROM TERMINAL/SANITY.io
+Run the foolowinf to add exceptionto localhost 3000 and 19006 CORS policy
+cd sanity
+
+sanity cors http://localhost:3000   mobile
+sanity cors http://localhost:19006  web
 
 
 
