@@ -604,6 +604,69 @@ sanity cors http://localhost:19006  web
 
 
 
+10. Navigate between screen
+
+
+ # app.js
+ <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+
+
+
+# ReasturantCard.js
+ <TouchableOpacity
+       onPress={() => {
+        navigation.navigate("Restaurant", {
+          id,
+          imgUrl,
+          title,
+          rating,
+          genre,
+          address,
+          short_description,
+          dishes,
+          long,
+          lat,
+        })
+       }}
+      className="bg-white mr-3 shadow"
+  ></TouchableOpacity>
+
+
+  # RestaurantScreen.js
+  import { useRoute } from '@react-navigation/native';
+
+  function MyText({ caption, title}) {
+    const route = useRoute();
+
+    return <Text>{route.params.caption}</Text>;
+  }
+
+
+
+
+
+11. Hiding Header bar
+
+const navigation = useNavigation()
+
+ useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    })
+  },[])
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
