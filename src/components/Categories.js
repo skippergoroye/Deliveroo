@@ -11,7 +11,7 @@ export default function Categories() {
   useEffect(() => {
     client.fetch(`
      *[_type == "category"]
-    `). then((data) => {
+    `).then((data) => {
       setCategories(data)
     })
   }, [])

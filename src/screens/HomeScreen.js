@@ -8,6 +8,7 @@ import FeaturedRow from "../components/FeaturedRow";
 import { client } from "../../sanity";
 
 
+
 function HomeScreen() {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([])

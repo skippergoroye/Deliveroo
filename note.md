@@ -657,6 +657,18 @@ const navigation = useNavigation()
 
 
 
+12. Currency Formatter
+yarn add react-currency-formatter
+
+import Currency from 'react-currency-formatter';
+ 
+<Currency
+  quantity={45685}
+  currency="EUR"
+/>
+
+
+
 
 
 

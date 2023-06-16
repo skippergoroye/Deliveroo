@@ -21,8 +21,8 @@ export default function FeaturedRow({ id, title, description }) {
             }
           },
         }[0]
-      `,{id}). then((data) => {
-          setRetaurants(data?.restaurants);
+      `,{id}).then((data) => {
+        setRetaurants(data?.restaurants);
       })
   },[id])
 
