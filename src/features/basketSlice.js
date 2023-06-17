@@ -9,20 +9,39 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state, action) => {
+      // console.log(action)
       state.items = [...state.items, action.payload]
+
+       // state.items = [...state.items, action.payload];
+      //  const { id, item } = action.payload;
+      //  const newItem = { id, ...item };
+      //  state.items.push(newItem);
     },
     removeFromBasket: (state, action)  => {
-      state.value -= 1
+      const index = state.items.findIndex((item) => item.id === action.payload.id)
+
+      let newBasket = [...state.items];
+
+      if(index >= 0){
+        newBasket.splice(index, 1)
+      } else {
+        console.warn(`Cantremove product (id: ${action.payload.id}) as its not in basket`)
+      }
+
+      state.items = newBasket;
     }, 
+
   }
 })
 
 
 export const { addToBasket, removeFromBasket } = basketSlice.actions
 
-export const selectBasketItems = state=> state.basket.items;
+export const selectBasketItems = state => state.basket.items;
 
-export const selectBasketItemsById = (state, id)=> state.basket.items.filter(item=> item.id==id);
+export const selectBasketItemsById = (state, id) => state.basket.items.filter(item=> item.id == id);
+
+export const selectBasketTotal = (state) => state.basket.items.reduce((total, item) => total += item.price, 0)
 
 
 export default basketSlice.reducer

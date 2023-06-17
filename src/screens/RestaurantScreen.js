@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { Feather, FontAwesome, Ionicons, EvilIcons, Entypo } from '@expo/vector-icons'; 
 import { urlFor } from '../../sanity'
 import DishRow from '../components/DishRow';
+import BasketIcon from '../components/BasketIcon';
 
 
 export default function RestaurantScreen() {
@@ -33,6 +34,8 @@ export default function RestaurantScreen() {
       })
    },[])
   return (
+    <>
+    <BasketIcon />
     <ScrollView>
       <View className="relative">
         <Image 
@@ -80,7 +83,7 @@ export default function RestaurantScreen() {
         </TouchableOpacity>
       </View>
 
-      <View>
+      <View className="pb-36">
         <Text className="px-4 pt-6 mb-6 font-bold text-xl">Menu</Text>
 
         {dishes.map((dish) => (
@@ -95,5 +98,6 @@ export default function RestaurantScreen() {
         ))}
       </View>
     </ScrollView>
+    </>
   )
 }

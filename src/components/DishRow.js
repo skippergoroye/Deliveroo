@@ -4,20 +4,24 @@ import { urlFor } from "../../sanity";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBasket, selectBasketItemsById  } from "../features/basketSlice";
+import { addToBasket, removeFromBasket, selectBasketItemsById } from "../features/basketSlice";
 
 export default function ({ id, name, description, price, image }) {
   const [isPressed, setIsPressed] = useState(false);
   // const { items } = useSelector((state) => state.basket);
- 
+
   const dispatch = useDispatch();
-  const basketItems = useSelector(state => selectBasketItemsById(state, id));
-  const handleIncrease = ()=>{
-      dispatch(addToBasket({id, name, price, image, description}));
+  const items = useSelector((state) => selectBasketItemsById(state, id));
+
+
+  const handleIncrease = () => {
+    dispatch(addToBasket({ id, name, price, image, description }));
+  };
+
+  const handleDecrease = () => {
+    if(!items.length > 0) return
+    dispatch(removeFromBasket({ id })) 
   }
-
-
-
 
   return (
     <>
@@ -53,11 +57,11 @@ export default function ({ id, name, description, price, image }) {
       {isPressed && (
         <View className="bg-white px-4">
           <View className="flex-row items-center space-x-2 pb-3">
-            <TouchableOpacity>
-              <AntDesign name="minuscircle" size={24} color="#00CCBB" />
+            <TouchableOpacity disabled={!items.length} onPress={handleDecrease}>
+              <AntDesign name="minuscircle" size={24} color={items.length > 0 ? "#00CCBB" : "gray"} />
             </TouchableOpacity>
 
-            <Text>{basketItems.length}</Text>
+            <Text>{items.length}</Text>
 
             <TouchableOpacity onPress={handleIncrease}>
               <AntDesign name="pluscircle" size={24} color="#00CCBB" />
