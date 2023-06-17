@@ -852,6 +852,24 @@ export function Counter() {
 
 
 
+14. Add animation to React native
+# react-native-animatable
+Declarative transitions and animations for React Native
+
+
+# Installation
+$ npm install react-native-animatable --save
+
+
+
+
+
+
+
+
+
+
+
 
 
 

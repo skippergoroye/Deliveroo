@@ -13,7 +13,7 @@ export default function ({ id, name, description, price, image }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => selectBasketItemsById(state, id));
 
-
+  
   const handleIncrease = () => {
     dispatch(addToBasket({ id, name, price, image, description }));
   };
