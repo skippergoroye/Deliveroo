@@ -849,16 +849,93 @@ export function Counter() {
 
 
 
-
-
-
 14. Add animation to React native
 # react-native-animatable
 Declarative transitions and animations for React Native
 
 
 # Installation
-$ npm install react-native-animatable --save
+npm install react-native-animatable
+
+
+# Usage
+import * as Animatable from "react-native-animatable";
+
+
+<Animatable.Image
+  source={require("../../assets/images/delivery.gif")}
+  animation="slideInUp"
+  iterationCount={1}
+  className="h-80 w-80"
+/>
+
+
+<Animatable.Text
+  animation="slideInUp"
+  iterationCount={1}
+  className="h-80 w-80"
+>
+  Waiting for Restaurant to accept your order
+</Animatable.Text>
+
+
+
+
+
+
+
+
+
+15. React native progress
+Progress indicators and spinners for React Native using React Native SVG.
+
+
+
+# Installation
+- npm install react-native-progress 
+
+
+# Usage
+To use the Pie or Circle components, you need to install React Native SVG in your project.
+
+import * as Progress from 'react-native-progress';
+
+<Progress.Bar size={30} color="#00CCBB" indeterminate={true} />
+
+
+
+
+
+
+16. MapView
+`<react-native-maps provides>` a Map component that uses Google Maps on Android and Apple Maps or Google Maps on iOS.
+
+
+
+# installation
+- npx expo install react-native-maps
+
+
+# Usage
+
+import MapView from 'react-native-maps'
+
+<MapView  
+  initialRegion={{
+      latitude: restaurant.lat,
+      longitude: restaurant.long,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005,
+  }}
+  className="flex-1 mt-10 z-0"
+  mapType="mutedStandard"
+  ></MapView>
+
+
+
+
+
+
 
 
 
